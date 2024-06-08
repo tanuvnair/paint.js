@@ -6,10 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>paint.js</title>
     <link rel="shortcut icon" href="icon.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="bootstrap-icons.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <div class="container">
+        <div id="toolBar" class="tool-bar">
+            <i class="tool-item bi bi-cursor-fill active"></i>
+            <i class="tool-item bi bi-pencil-fill"></i>
+            <i class="tool-item bi bi-eyedropper"></i>
+            <i class="tool-item bi bi-square"></i>
+        </div>
+
+        <div class="button-bar">
+            <button id="clearCanvasButton" class="btn btn-secondary">Clear Canvas</button>
+            <button class="btn btn-primary">Save As Image</button>
+        </div>
+
+        <canvas id="myCanvas"></canvas>
+    </div>
+
     <script src="index.js"></script>
 </body>
 

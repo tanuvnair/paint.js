@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css?family=Inter:700|Inter:400');
+
+:root {
+    --text: #eae9fc;
+    --background: #010104;
+    --primary: #3a31d8;
+    --secondary: #020024;
+    --accent: #0600c2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter';
+  font-weight: 400;
+  background-color: var(--background);
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Inter';
+  font-weight: 700;
+}
+
+html {font-size: 100%;} /* 16px */
+
+h1 {font-size: 4.210rem; /* 67.36px */}
+
+h2 {font-size: 3.158rem; /* 50.56px */}
+
+h3 {font-size: 2.369rem; /* 37.92px */}
+
+h4 {font-size: 1.777rem; /* 28.48px */}
+
+h5 {font-size: 1.333rem; /* 21.28px */}
+
+small {font-size: 0.750rem; /* 12px */}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.tool-bar {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    background-color: var(--primary);
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    gap: 25px;
+}
+
+.tool-item {
+    transition: 0.3s;
+    color: var(--text);
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.tool-item:hover {
+    transform: scale(1.25);
+}
+
+.active {
+    background-color: var(--secondary);
+    color: var(--text);
+}
+
+.button-bar {
+    position: absolute;
+    display: flex;
+    gap: 15px;
+    z-index: 1;
+    bottom: 0;
+    right: 0;
+    padding: 20px 20px;
+}
+
+.btn {
+    font-family: 'Inter';
+    font-weight: 600;
+    font-size: 16px;
+    padding: 12px 25px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--text);
+}
+
+.btn-secondary {
+    background-color: var(--secondary);
+    color: var(--text);
+}
+
+#myCanvas {
+    position: absolute;
+    background-color: var(--background);
+}
