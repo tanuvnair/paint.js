@@ -23,7 +23,7 @@ for (var i = 0; i < toolItems.length; i++) {
 
         switch (currentToolIndex) {
             case 0:
-                console.log("Selection tool");
+                selectionTool();
                 break;
             case 1:
                 pencilTool();
@@ -62,6 +62,61 @@ function updateSize() {
     myCanvas.width = window.innerWidth;
 
     ctx.putImageData(savedImageData, 0, 0);
+}
+
+// Shapes storages?
+const rectangles = [];
+const circles = [];
+var selectedShape = null;
+
+// Tools
+function selectionTool() {
+    myCanvas.addEventListener("mousedown", function (e) {
+        const mouseX = e.clientX - myCanvas.getBoundingClientRect().left;
+        const mouseY = e.clientY - myCanvas.getBoundingClientRect().top;
+
+        if (currentToolIndex == 0) {
+            for (var i = 0; i < rectangles.length; i++) {
+                if (isPointInRectangle(mouseX, mouseY, rectangles[i])) {
+                    selectedShape = rectangles[i];
+                    break;
+                }
+            }
+        }
+    });
+
+    myCanvas.addEventListener("mousemove", function (e) {
+        if (selectedShape && currentToolIndex == 0) {
+            const mouseX = e.clientX - myCanvas.getBoundingClientRect().left;
+            const mouseY = e.clientY - myCanvas.getBoundingClientRect().top;
+
+            selectedShape.x = mouseX - selectedShape.w / 2;
+            selectedShape.y = mouseY - selectedShape.h / 2;
+
+            redrawCanvas();
+        }
+    });
+
+    myCanvas.addEventListener("mouseup", function (e) {
+        selectedShape = null;
+        console.log(rectangles.x, rectangles);
+    });
+}
+
+function isPointInRectangle(x, y, rect) {
+    return (
+        x >= rect.x &&
+        x <= rect.x + rect.w &&
+        y >= rect.y &&
+        y <= rect.y + rect.h
+    );
+}
+
+function redrawCanvas() {
+    ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
+    rectangles.forEach((rect) => {
+        drawRect(rect.x, rect.y, rect.w, rect.h, primary);
+    });
 }
 
 function pencilTool() {
@@ -128,6 +183,9 @@ function rectangleTool() {
             drawRect(x, y, w, h, primary);
             isDrawing = false;
             myCanvas.removeEventListener("mousemove", onMouseMove);
+
+            rectangles.push({ x: x, y: y, w: w, h: h });
+            console.log(rectangles);
         }
     });
 
@@ -219,13 +277,15 @@ function drawCircle(x, y, radius, color, fill = true) {
 
 // Clear Canvas
 const clearCanvasButton = document.getElementById("clearCanvasButton");
-clearCanvasButton.addEventListener("click", function () {
+clearCanvasButton.addEventListener("click", function (e) {
     ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
+    rectangles.length = 0;
+    circles.length = 0;
 });
 
 // Save As Image
 const saveAsImageButton = document.getElementById("saveAsImageButton");
-saveAsImageButton.addEventListener("click", function () {
+saveAsImageButton.addEventListener("click", function (e) {
     // The variable canvasUrl stores a data URL representing the image content of the canvas.
     var canvasUrl = myCanvas.toDataURL();
 
