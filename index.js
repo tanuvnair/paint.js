@@ -17,27 +17,6 @@ for (var i = 0; i < toolItems.length; i++) {
             toolItems[j].classList.remove("active");
         }
         this.classList.add("active");
-
-        // // Set currentToolIndex to the index of the clicked tool item
-        // currentToolIndex = Array.prototype.indexOf.call(toolItems, this);
-
-        // switch (currentToolIndex) {
-        //     case 0:
-        //         selectionTool();
-        //         break;
-        //     case 1:
-        //         pencilTool();
-        //         break;
-        //     case 2:
-        //         rectangleTool();
-        //         break;
-        //     case 3:
-        //         circleTool();
-        //         break;
-        //     default:
-        //         console.log("Something went wrong");
-        //         break;
-        // }
     });
 }
 
