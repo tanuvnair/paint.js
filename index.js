@@ -183,7 +183,6 @@ myCanvas.addEventListener("mouseup", function (e) {
             drawRect(x, y, w, h, primary);
             isDrawing = false;
             rectangles.push({ x: x, y: y, w: w, h: h });
-            console.log(rectangles);
             break;
         case 3:
             drawCircle(x, y, r, primary);
