@@ -39,6 +39,10 @@ h5 {font-size: 1.333rem; /* 21.28px */}
 
 small {font-size: 0.750rem; /* 12px */}
 
+#myCanvas {
+    position: absolute;
+    background-color: var(--background);
+}
 
 .container {
     display: flex;
@@ -109,9 +113,4 @@ small {font-size: 0.750rem; /* 12px */}
 .btn-secondary {
     background-color: var(--secondary);
     color: var(--text);
-}
-
-#myCanvas {
-    position: absolute;
-    background-color: var(--background);
 }
