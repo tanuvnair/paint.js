@@ -41,6 +41,22 @@ for (var i = 0; i < toolItems.length; i++) {
     });
 }
 
+// toolItems[0].addEventListener("click", function () {
+//     currentToolIndex = 0;
+// });
+
+// toolItems[1].addEventListener("click", function () {
+//     currentToolIndex = 1;
+// });
+
+// toolItems[2].addEventListener("click", function () {
+//     currentToolIndex = 2;
+// });
+
+// toolItems[3].addEventListener("click", function () {
+//     currentToolIndex = 3;
+// });
+
 // Canvas stuff
 const myCanvas = document.getElementById("myCanvas");
 const ctx = myCanvas.getContext("2d");
@@ -65,8 +81,8 @@ function updateSize() {
 }
 
 // Shapes storages?
-const rectangles = [];
-const circles = [];
+var rectangles = [];
+var circles = [];
 var selectedShape = null;
 
 // Tools
@@ -182,7 +198,7 @@ function rectangleTool() {
         if (currentToolIndex == 2) {
             drawRect(x, y, w, h, primary);
             isDrawing = false;
-            myCanvas.removeEventListener("mousemove", onMouseMove);
+            // myCanvas.removeEventListener("mousemove", onMouseMove);
 
             rectangles.push({ x: x, y: y, w: w, h: h });
             console.log(rectangles);
