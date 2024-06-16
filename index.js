@@ -242,6 +242,27 @@ clearCanvasButton.addEventListener("click", function (e) {
     circles.length = 0;
 });
 
+// Load Image
+const loadImageButton = document.getElementById("loadImageButton");
+loadImageButton.addEventListener("click", function (e) {
+    const fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = "image/*";
+    fileInput.addEventListener("change", function (e) {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const img = new Image();
+            img.onload = function () {
+                ctx.drawImage(img, 0, 0);
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    });
+    fileInput.click();
+});
+
 // Save As Image
 const saveAsImageButton = document.getElementById("saveAsImageButton");
 saveAsImageButton.addEventListener("click", function (e) {
